@@ -34,7 +34,6 @@ RUN mkdir -p /extra_class_path
 COPY ./target/demo-1.0-SNAPSHOT.war ${DEPLOYMENT_DIR}
 EXPOSE 8000
 #ENV JAVA_OPTS="-XXaltjvm=dcevm -agentlib:jdwp=transport=dt_socket,server=y,address=8000,suspend=n -javaagent:/opt/hotswap-agent/hotswap-agent.jar -Dextra.class.path=/extra_class_path -Dwebapp.dir=/webapp_dir"
-ENV JAVA_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,address=8000,suspend=n -javaagent:/opt/hotswap-agent/hotswap-agent.jar -Dextra.class.path=/extra_class_path -Dwebapp.dir=/webapp_dir --add-opens java.base/jdk.internal.loader=ALL-UNNAMED --add-opens java.desktop/com.sun.beans.introspect=ALL-UNNAMED"
-
+ENV JAVA_OPTS="-XX:+AllowEnhancedClassRedefinition -agentlib:jdwp=transport=dt_socket,server=y,address=8000,suspend=n -javaagent:/opt/hotswap-agent/hotswap-agent.jar -Dextra.class.path=/extra_class_path -Dwebapp.dir=/webapp_dir --add-opens java.base/jdk.internal.loader=ALL-UNNAMED --add-opens java.desktop/com.sun.beans.introspect=ALL-UNNAMED --add-opens java.desktop/com.sun.beans.util=ALL-UNNAMED --add-exports java.desktop/com.sun.beans.util=ALL-UNNAMED --add-exports java.base/java.net=ALL-UNNAMED --add-opens java.base/java.net=ALL-UNNAMED --add-opens java.desktop/java.beans=ALL-UNNAMED"
 
 
