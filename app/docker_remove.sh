@@ -1,0 +1,1 @@
+docker image rm jetbrains/runtime:jbr17env --force
