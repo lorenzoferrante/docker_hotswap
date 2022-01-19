@@ -6,10 +6,9 @@ import javax.servlet.annotation.*;
 
 @WebServlet(name = "helloServlet", value = "/HelloServlet")
 public class HelloServlet extends HttpServlet {
-    private String message;
 
     public void init() {
-        message = "Hello World 6!";
+        message = "Hello World!";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -17,7 +16,8 @@ public class HelloServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
+        CustomMessage customMessage = new CustomMessage();
+        out.println("<h1>Hello " + customMessage.getMessage() + "</h1>");
         out.println("</body></html>");
     }
 
